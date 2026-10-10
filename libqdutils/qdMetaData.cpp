@@ -91,7 +91,7 @@ int setMetaDataVa(MetaData_t *data, DispParamType paramType,
             data->interlaced = *((int32_t *)param);
             break;
         case UPDATE_BUFFER_GEOMETRY:
-            data->bufferDim = *((BufferDim_t *)param);
+            // bufferDim is not present in newer MetaData_t definitions
             break;
         case UPDATE_REFRESH_RATE:
             data->refreshrate = *((float *)param);
@@ -178,10 +178,7 @@ int getMetaDataVa(MetaData_t *data, DispFetchParamType paramType,
             }
             break;
         case GET_BUFFER_GEOMETRY:
-            if (data->operation & UPDATE_BUFFER_GEOMETRY) {
-                *((BufferDim_t *)param) = data->bufferDim;
-                ret = 0;
-            }
+            // bufferDim is not present in newer MetaData_t definitions
             break;
         case GET_REFRESH_RATE:
             if (data->operation & UPDATE_REFRESH_RATE) {

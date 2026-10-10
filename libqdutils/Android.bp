@@ -18,3 +18,18 @@ cc_library_shared {
     ],
 }
 
+cc_library_shared {
+    name: "libqdMetaData",
+    vendor: true,
+    defaults: ["display_defaults"],
+    export_include_dirs: ["."],
+    header_libs: ["libhardware_headers", "libutils_headers"],
+    cflags: [
+        "-DLOG_TAG=\"DisplayMetaData\"",
+        "-Wno-sign-conversion",
+    ],
+    srcs: [
+        "qdMetaData.cpp",
+    ],
+}
+
